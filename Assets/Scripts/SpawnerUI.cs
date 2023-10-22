@@ -14,5 +14,9 @@ public class ObjectBuilderEditor : Editor
         {
             myScript.SpawnObjects();
         }
+        if (GUILayout.Button("DestroyAll"))
+        {
+            myScript.DestroyAll();
+        }
     }
 }

@@ -11,7 +11,6 @@ public class Spawner : MonoBehaviour
 
     public void SpawnObjects()
     {
-        Debug.Log("Spawner");
         if(transform.childCount > 0)
         {
             foreach (Transform child in transform)
@@ -19,12 +18,22 @@ public class Spawner : MonoBehaviour
                 DestroyImmediate(child.gameObject);
             }
         }
-        Debug.Log(widthAndHeight);
         for (int width = 0; width < widthAndHeight.x; width++)
         {
             for (int height = 0;height<widthAndHeight.y; height++)
             {
-                Instantiate(prefabToSpawn, new Vector3(width, height, 0), Quaternion.identity, transform);
+                Instantiate(prefabToSpawn, new Vector3(width, height, transform.position.z), Quaternion.identity, transform);
+            }
+        }
+    }
+
+    public void DestroyAll()
+    {
+        if (transform.childCount > 0)
+        {
+            foreach (Transform child in transform)
+            {
+                DestroyImmediate(child.gameObject);
             }
         }
     }
